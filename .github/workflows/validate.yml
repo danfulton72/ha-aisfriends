@@ -64,7 +64,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Check whether default branch is HACS-ready
+      - name: Check whether default branch can be validated by HACS
         id: base
         shell: bash
         run: |
@@ -74,13 +74,22 @@ jobs:
           fi
 
           git fetch --no-tags origin "$GITHUB_BASE_REF"
-          if git cat-file -e "origin/$GITHUB_BASE_REF:custom_components/aisfriends/manifest.json" 2>/dev/null \
-             && git cat-file -e "origin/$GITHUB_BASE_REF:hacs.json" 2>/dev/null; then
-            echo "ready=true" >> "$GITHUB_OUTPUT"
-          else
+
+          if ! git cat-file -e "origin/$GITHUB_BASE_REF:custom_components/aisfriends/manifest.json" 2>/dev/null \
+             || ! git cat-file -e "origin/$GITHUB_BASE_REF:hacs.json" 2>/dev/null; then
             echo "ready=false" >> "$GITHUB_OUTPUT"
             echo "Bootstrap PR: HACS validates the repository default branch, which is not HACS-ready until this PR is merged."
+            exit 0
           fi
+
+          if [[ -f custom_components/aisfriends/brand/icon.png ]] \
+             && ! git cat-file -e "origin/$GITHUB_BASE_REF:custom_components/aisfriends/brand/icon.png" 2>/dev/null; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "Brand bootstrap PR: HACS validates the default branch, so the new brand asset can only be validated after merge."
+            exit 0
+          fi
+
+          echo "ready=true" >> "$GITHUB_OUTPUT"
 
       - name: Validate repository with HACS
         if: steps.base.outputs.ready == 'true'
