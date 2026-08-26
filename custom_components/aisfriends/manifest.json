@@ -1,14 +1,14 @@
 {
   "domain": "aisfriends",
   "name": "AISFriends Vessel Tracker",
-  "version": "0.0.0",
   "codeowners": [
     "@danfulton72"
   ],
   "config_flow": true,
   "documentation": "https://github.com/danfulton72/ha-aisfriends",
-  "issue_tracker": "https://github.com/danfulton72/ha-aisfriends/issues",
   "integration_type": "service",
   "iot_class": "cloud_polling",
-  "requirements": []
+  "issue_tracker": "https://github.com/danfulton72/ha-aisfriends/issues",
+  "requirements": [],
+  "version": "0.0.0"
 }
