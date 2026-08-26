@@ -1,0 +1,52 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "AISFriends Vessel Tracker",
+        "description": "Connect to the AISFriends AIS API to track vessels in real time.",
+        "data": {
+          "username": "API Token (Bearer)",
+          "mmsi_list": "MMSI Numbers (comma-separated)",
+          "rate_minutes": "Poll interval (minutes)",
+          "debug_logging": "Enable debug logging"
+        },
+        "data_description": {
+          "username": "Your AISFriends API bearer token.",
+          "mmsi_list": "Enter one or more 9-digit MMSI numbers separated by commas.",
+          "rate_minutes": "How often to query the API. Minimum 1 minute.",
+          "debug_logging": "Log additional API troubleshooting details. The bearer token is never logged."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Unable to connect to the AISFriends API. Check your network connection and try again.",
+      "invalid_auth": "Invalid API token. Please check your AISFriends bearer token.",
+      "no_mmsi": "No valid 9-digit MMSI numbers were entered.",
+      "rate_limited": "The API returned a rate-limit error (429). Try a longer poll interval.",
+      "unknown": "Unexpected error. Check the Home Assistant logs for details."
+    },
+    "abort": {
+      "already_configured": "This AISFriends account is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "AISFriends Options",
+        "data": {
+          "mmsi_list": "MMSI Numbers (comma-separated)",
+          "rate_minutes": "Poll interval (minutes)",
+          "debug_logging": "Enable debug logging"
+        },
+        "data_description": {
+          "mmsi_list": "Enter one or more 9-digit MMSI numbers separated by commas.",
+          "rate_minutes": "How often to query the API.",
+          "debug_logging": "Log additional API troubleshooting details."
+        }
+      }
+    },
+    "error": {
+      "no_mmsi": "No valid 9-digit MMSI numbers were entered."
+    }
+  }
+}
