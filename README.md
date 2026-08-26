@@ -1,7 +1,7 @@
 # AISFriends Vessel Tracker for Home Assistant
 
 <p align="center">
-  <img src="icon.png" alt="AISFriends icon" width="160">
+  <img src="custom_components/aisfriends/brand/icon.png" alt="AISFriends icon" width="160">
 </p>
 
 A Home Assistant custom integration for tracking vessels from the AISFriends API by MMSI. It exposes each vessel as a GPS device tracker plus navigation, destination, ETA, and speed sensors.
