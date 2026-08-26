@@ -20,7 +20,8 @@ jobs:
           cache-dependency-path: requirements_test.txt
       - run: python -m pip install --upgrade pip -r requirements_test.txt
       - run: python -m compileall -q custom_components/aisfriends scripts
-      - run: pyflakes custom_components/aisfriends scripts
+      - run: pyflakes custom_components/aisfriends tests scripts
+      - run: pytest -q
   hassfest:
     name: Home Assistant hassfest
     runs-on: ubuntu-latest
